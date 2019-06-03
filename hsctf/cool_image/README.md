@@ -1,6 +1,6 @@
 # Cool Image
 
-[!Title](images/title.png)
+![Title](images/title.png)
 
 ## Initial Thoughts
 * Verify file type
@@ -11,4 +11,4 @@
 
 Literally just download the file and open with EOG.
 
-[!Flag](images/flag.png)
+![Flag](images/flag.png)
