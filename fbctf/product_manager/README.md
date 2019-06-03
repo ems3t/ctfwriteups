@@ -12,12 +12,18 @@
 ## Walkthrough
 
 Reading through the files provided it appears the flag is in the description of the *facebook* product.
-![Add Product](http://github.com/ems3t/ctfwriteups/fbctf/product_managerimages/add_product.png)
+
+![Add Product](images/db_info.png)
+
 Using MySQL vulnerability, when a new product is added with the name facebook plus any number of spaces the website accepts this as a valid new product but ends up just changing the original facebook product's secret key.
+
+![Add Product](images/add_product.png)
 
 View the facebook product using the newly changed secret key to view the flag.
 
-Links:
+![Add Product](images/flag.png)
+
+# Links:
 https://bugs.mysql.com/bug.php?id=64772
 
 
