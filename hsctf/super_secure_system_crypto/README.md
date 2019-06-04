@@ -14,6 +14,7 @@
 
 <details>
 	<summary>Testing Random Stuff</summary>
+
 ![Test](images/test.png)
 </details>
 
@@ -21,6 +22,7 @@
 
 <details>
 	<summary>Python Script</summary>
+	
 ```python
 #!/usr/bin/env python
 from pwn import *
