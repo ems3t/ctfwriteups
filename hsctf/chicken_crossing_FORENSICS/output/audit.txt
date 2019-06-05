@@ -1,0 +1,23 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Wed Jun  5 11:11:49 2019
+Invocation: foremost hsctf-chicken_crossing.jpg 
+Output directory: /root/ctfwriteups/hsctf/chicken_crossing_FORENSICS/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: hsctf-chicken_crossing.jpg
+Start: Wed Jun  5 11:11:49 2019
+Length: 141 KB (145310 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.jpg 	     141 KB 	          0 	 
+Finish: Wed Jun  5 11:11:49 2019
+
+1 FILES EXTRACTED
+	
+jpg:= 1
+------------------------------------------------------------------
+
+Foremost finished at Wed Jun  5 11:11:49 2019

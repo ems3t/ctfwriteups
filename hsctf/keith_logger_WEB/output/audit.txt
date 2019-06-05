@@ -1,0 +1,23 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Wed Jun  5 14:40:19 2019
+Invocation: foremost extension.crx 
+Output directory: /root/ctfwriteups/hsctf/keith_logger_WEB/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: extension.crx
+Start: Wed Jun  5 14:40:19 2019
+Length: 31 KB (31761 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000001.zip 	      30 KB 	        593 	 
+Finish: Wed Jun  5 14:40:19 2019
+
+1 FILES EXTRACTED
+	
+zip:= 1
+------------------------------------------------------------------
+
+Foremost finished at Wed Jun  5 14:40:19 2019
