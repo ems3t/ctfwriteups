@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+
+a = "ABAAAABABAABBABBAABBAABAAAAAABAAAAAAAABAABBABABBAAAAABBABBABABBAABAABABABBAABBABBAABB"
+
+a = a.replace("A", "0")
+a = a.replace("B", "1")
+print len(a)/5
