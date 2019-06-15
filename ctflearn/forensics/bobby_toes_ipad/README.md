@@ -14,3 +14,6 @@ Zsteg confirms jpeg exists after the IEND in the png. Removing the congrats stri
 ![IPAD](images/ipad.jpeg)
 
 WIP
+
+zpv_tigqylhbafmeoesllpms
+smpllseoemfabhlyqgit_vpz
