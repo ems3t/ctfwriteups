@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="10.0px" android:paddingTop="10.0px" android:paddingRight="10.0px" android:paddingBottom="10.0px" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Enter your math expression:" />
-    <EditText android:id="@id/txtExpression" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:ems="10" android:layout_below="@id/textView1" android:layout_alignLeft="@id/textView1" />
-    <Button android:id="@id/btnCalc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="53.0dip" android:text="Calculate" android:layout_below="@id/txtExpression" android:layout_alignLeft="@id/txtExpression" android:onClick="createBackground" />
-    <TextView android:id="@id/lblResult" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="132.0dip" android:layout_below="@id/btnCalc" android:layout_alignRight="@id/btnCalc" />
-</RelativeLayout>

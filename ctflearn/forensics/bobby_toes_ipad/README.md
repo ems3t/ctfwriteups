@@ -13,7 +13,17 @@ Zsteg confirms jpeg exists after the IEND in the png. Removing the congrats stri
 
 ![IPAD](images/ipad.jpeg)
 
-WIP
-
+Spent a ton of time with steghide and stegsolve on the IPAD. Went back a used stegsolve on the original png and found:
+```
 zpv_tigqylhbafmeoesllpms
-smpllseoemfabhlyqgit_vpz
+```
+
+Put that in cyberchef with the phrase from the ipad jpeg using vigenere decode and out popped the flag
+
+
+
+<details>
+	<summary>Flag</summary>
+
+you_thinkyougotskillshuh
+</details>
