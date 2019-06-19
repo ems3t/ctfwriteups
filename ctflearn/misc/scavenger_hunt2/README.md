@@ -74,13 +74,13 @@ Horace Shimmingsworth stole it from me!
 
 Raw bytes	
 
-45 54 c6 f6 f6 b2 c2 04   92 06 46 f6 e2 77 42 06
-86 17 66 52 07 46 86 52   06 66 c6 16 72 06 16 e7
-96 d6 f7 26 52 e2 04 92   07 37 76 56 17 22 e0 a4
-86 f7 26 16 36 52 05 36   86 96 d6 d6 96 e6 77 37
-76 f7 27 46 82 07 37 46   f6 c6 52 06 97 42 06 67
-26 f6 d2 06 d6 52 10 ec   11 ec 11 ec 11 ec 11 ec
-11 ec 11 ec 11 ec 11 ec   11 ec 11 ec 
+45 54 c6 f6 f6 b2 c2 04 92 06 46 f6 e2 77 42 06
+86 17 66 52 07 46 86 52 06 66 c6 16 72 06 16 e7
+96 d6 f7 26 52 e2 04 92 07 37 76 56 17 22 e0 a4
+86 f7 26 16 36 52 05 36 86 96 d6 d6 96 e6 77 37
+76 f7 27 46 82 07 37 46 f6 c6 52 06 97 42 06 67
+26 f6 d2 06 d6 52 10 ec 11 ec 11 ec 11 ec 11 ec
+11 ec 11 ec 11 ec 11 ec 11 ec 11 ec 
 
 Barcode format	QR_CODE
 Parsed Result Type	TEXT
